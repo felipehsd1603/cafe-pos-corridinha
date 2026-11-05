@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>57 anos da Pat · Café Colonial</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+  :root{
+    color-scheme:light;
+    --cream:#f7ece1;
+    --cream-2:#fbf6f0;
+    --blush:#ecd6d0;
+    --blush-2:#e3c1b9;
+    --wine:#922c44;
+    --wine-dark:#6c1f34;
+    --wine-soft:#b8697d;
+    --olive:#3f4a26;
+    --olive-soft:#e4e6d2;
+    --ink:#2b2420;
+    --ink-soft:#6b5a54;
+    --line:rgba(43,36,32,.14);
+    --card:#fffaf4;
+    --shadow:0 16px 34px -22px rgba(43,36,32,.45);
+    --ok:#3d7a4f;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html{font-size:16px;}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Nunito',system-ui,sans-serif;line-height:1.45;padding-bottom:env(safe-area-inset-bottom);}
+  [hidden]{display:none!important;}
+  #root{max-width:640px;margin:0 auto;padding:0 18px calc(48px + env(safe-area-inset-bottom));}
+  h1,h2{text-wrap:balance;margin:0;}
+  p{margin:0;}
+
+  .hero{position:relative;overflow:hidden;border-radius:0 0 28px 28px;padding:calc(40px + env(safe-area-inset-top)) 22px 36px;margin:0 -18px 28px;background:var(--cream-2);}
+  .hero-blob{position:absolute;inset:-20% -10% auto auto;width:120%;height:75%;background:var(--blush);border-radius:44% 56% 62% 38% / 40% 44% 56% 60%;transform:rotate(-8deg);}
+  .hero-blob-2{position:absolute;left:-25%;bottom:-30%;width:80%;height:60%;background:var(--blush-2);border-radius:60% 40% 30% 70% / 55% 45% 55% 45%;opacity:.75;}
+  .hero-inner{position:relative;z-index:1;}
+  .eyebrow{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;color:var(--olive);margin-bottom:10px;}
+  .title{font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:clamp(2.5rem,11vw,4rem);line-height:.95;color:var(--wine);}
+  .title .script{display:block;font-family:'Caveat',cursive;font-weight:700;color:var(--ink);font-size:.55em;margin-top:4px;}
+  .lede{margin-top:16px;font-size:1.02rem;line-height:1.55;max-width:34ch;}
+  .lede strong{color:var(--wine-dark);}
+  .balloon{position:absolute;right:22px;top:calc(30px + env(safe-area-inset-top));z-index:2;width:86px;height:98px;background:var(--wine);border-radius:50% 50% 50% 50% / 46% 46% 54% 54%;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;transform:rotate(8deg);}
+  .balloon::after{content:"";position:absolute;left:50%;bottom:-32px;width:1px;height:32px;background:var(--ink-soft);}
+  .balloon span{color:var(--cream-2);font-family:'Playfair Display',serif;font-weight:900;font-size:1.9rem;transform:rotate(-8deg);}
+
+  .info{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px;}
+  .info-item{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 12px;text-align:center;box-shadow:var(--shadow);}
+  .info-item .k{display:block;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+  .info-item .v{display:block;font-family:'Playfair Display',serif;font-weight:900;font-size:1.3rem;color:var(--wine);margin-top:4px;line-height:1.1;}
+  .info-item .s{display:block;font-size:.8rem;color:var(--ink-soft);margin-top:2px;}
+  .pay{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 20px;box-shadow:var(--shadow);margin-bottom:24px;}
+  .pay-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px;}
+  .pay-k{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);}
+  .pay-price{font-family:'Playfair Display',serif;font-weight:900;font-size:2rem;color:var(--wine);line-height:1.1;font-variant-numeric:tabular-nums;}
+  .pay-price span{font-family:'Nunito',sans-serif;font-weight:700;font-size:.85rem;color:var(--ink-soft);}
+  .pay-deadline{background:var(--olive-soft);color:var(--olive);border-radius:12px;padding:8px 12px;text-align:center;font-size:.75rem;font-weight:700;line-height:1.25;flex:none;}
+  .pay-deadline b{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:900;}
+  .pay-text{font-size:.92rem;line-height:1.55;margin-bottom:14px;}
+  .pix{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--cream-2);border:1.5px dashed var(--wine-soft);border-radius:14px;padding:12px 14px;}
+  .pix-key .k{display:block;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+  .pix-key .v{display:block;font-weight:800;font-size:1.15rem;font-variant-numeric:tabular-nums;letter-spacing:.02em;user-select:all;}
+  .pix-copy{flex:none;border:0;border-radius:12px;background:var(--olive);color:#fff;font:inherit;font-weight:800;font-size:.88rem;padding:12px 14px;min-height:46px;cursor:pointer;}
+  .pix-copy:hover{background:#2f3819;}
+  .pix-msg{min-height:1.2em;margin:6px 0 8px;font-size:.82rem;font-weight:700;color:var(--ok);}
+  .menu{border:1px solid var(--line);border-radius:12px;background:var(--cream-2);padding:2px 14px;}
+  .menu summary{cursor:pointer;padding:12px 0;font-weight:800;font-size:.9rem;color:var(--wine-dark);}
+  .menu ul{margin:0 0 10px;padding-left:20px;font-size:.9rem;line-height:1.7;}
+  .menu-note{font-size:.82rem;color:var(--ink-soft);padding-bottom:12px;}
+  .total{margin-top:10px;font-size:.9rem;color:var(--ink-soft);}
+  .total b{color:var(--wine-dark);font-variant-numeric:tabular-nums;}
+
+  .rsvp{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px 20px;box-shadow:var(--shadow);}
+  .rsvp h2{font-family:'Playfair Display',serif;font-weight:700;font-size:1.45rem;color:var(--wine-dark);margin-bottom:6px;}
+  .rsvp .sub{color:var(--ink-soft);font-size:.9rem;margin-bottom:20px;}
+  .step{margin-bottom:22px;}
+  .step-label{display:flex;align-items:baseline;gap:8px;font-weight:800;font-size:.95rem;margin-bottom:10px;}
+  .step-label .num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--wine);color:#fff;font-size:.72rem;flex:none;}
+  fieldset{border:0;padding:0;margin:0;}
+  legend{padding:0;}
+  input[type=text]{font:inherit;font-size:16px;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--cream-2);color:var(--ink);width:100%;min-height:50px;}
+  input[type=text]:focus{outline:2px solid var(--wine-soft);outline-offset:1px;}
+  .pills{display:flex;gap:10px;flex-wrap:wrap;}
+  .pill{position:relative;flex:1 1 140px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--line);border-radius:14px;padding:12px 16px;font-weight:700;font-size:.95rem;cursor:pointer;background:var(--cream-2);min-height:50px;text-align:center;}
+  .pill:has(input:checked){background:var(--wine);border-color:var(--wine);color:#fff;}
+  .pill:has(input:focus-visible){outline:2px solid var(--wine-soft);outline-offset:2px;}
+  .pill input{position:absolute;opacity:0;width:1px;height:1px;}
+  .stepper{display:flex;align-items:center;gap:14px;}
+  .stepper button{width:50px;height:50px;border-radius:14px;border:1.5px solid var(--line);background:var(--cream-2);font:inherit;font-size:1.5rem;font-weight:800;color:var(--wine-dark);cursor:pointer;}
+  .stepper button:disabled{opacity:.4;cursor:default;}
+  .stepper output{font-family:'Playfair Display',serif;font-weight:900;font-size:2rem;color:var(--wine);min-width:2ch;text-align:center;font-variant-numeric:tabular-nums;}
+  .stepper .unit{color:var(--ink-soft);font-size:.9rem;}
+  .hint{font-size:.8rem;color:var(--ink-soft);margin-top:8px;}
+
+  .send{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px;border-radius:14px;background:var(--wine);color:#fff;font-weight:800;font-size:1.05rem;text-decoration:none;min-height:56px;letter-spacing:.01em;}
+  .send:hover{background:var(--wine-dark);}
+  .send svg{width:22px;height:22px;flex:none;}
+  .form-msg{min-height:1.3em;margin-top:12px;font-weight:700;font-size:.9rem;}
+  .form-msg[data-kind="err"]{color:var(--wine-dark);}
+  .form-msg[data-kind="ok"]{color:var(--ok);}
+  .fallback{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-size:.84rem;color:var(--ink-soft);line-height:1.55;}
+  .fallback strong{color:var(--ink);font-variant-numeric:tabular-nums;}
+
+  .footer{text-align:center;padding:32px 0 0;}
+  .footer .script{font-family:'Caveat',cursive;font-weight:700;font-size:2.3rem;color:var(--wine);}
+  .footer .fine{margin-top:4px;font-size:.78rem;color:var(--ink-soft);}
+
+  @media (max-width:480px){
+    .balloon{width:62px;height:72px;right:14px;top:calc(22px + env(safe-area-inset-top));}
+    .balloon span{font-size:1.4rem;}
+    .info-item .v{font-size:1.1rem;}
+    .rsvp{padding:20px 16px;}
+  }
+</style>
+</head>
+<body>
+<div id="root">
+  <header class="hero">
+    <div class="hero-blob" aria-hidden="true"></div>
+    <div class="hero-blob-2" aria-hidden="true"></div>
+    <div class="balloon" aria-hidden="true"><span>57</span></div>
+    <div class="hero-inner">
+      <p class="eyebrow">Café Colonial</p>
+      <h1 class="title">57 anos<span class="script">da Pat</span></h1>
+      <p class="lede">Quero celebrar com você os meus 57 anos com movimento, saúde, amizade e um delicioso <strong>Café Colonial no Café na Orla!</strong></p>
+    </div>
+  </header>
+
+  <section class="info" aria-label="Quando e onde">
+    <div class="info-item"><span class="k">Data</span><span class="v">28/11</span><span class="s">sábado</span></div>
+    <div class="info-item"><span class="k">Horário</span><span class="v">9h</span><span class="s">café e confraternização</span></div>
+    <div class="info-item"><span class="k">Local</span><span class="v">Café na Orla</span></div>
+  </section>
+
+  <section class="pay" aria-label="Valor e pagamento">
+    <div class="pay-head">
+      <div>
+        <p class="pay-k">Café colonial</p>
+        <p class="pay-price">R$ 34,90 <span>por pessoa</span></p>
+      </div>
+      <p class="pay-deadline">Pix até<br><b>20/11</b></p>
+    </div>
+    <p class="pay-text">O Café na Orla vai preparar um café colonial conforme o cardápio abaixo, e a Pat leva um bolo para o parabéns.</p>
+    <div class="pix">
+      <div class="pix-key"><span class="k">Chave Pix</span><span class="v" id="pix-key">31987198996</span></div>
+      <button type="button" class="pix-copy" id="pix-copy">Copiar chave</button>
+    </div>
+    <p class="pix-msg" id="pix-msg" role="status" aria-live="polite"></p>
+    <p class="pay-text">Junto com a camiseta e o número de peito, a Pat entrega uma pulseirinha do café, que identifica quem vai participar do café colonial.</p>
+
+    <details class="menu">
+      <summary>Ver cardápio</summary>
+      <ul>
+        <li>Sanduíche de pão de cebola com frango cremoso</li>
+        <li>Pão de queijo coquetel</li>
+        <li>Folhado de goiabada</li>
+        <li>Folhado de queijo</li>
+        <li>Caponata de berinjela</li>
+        <li>Torradas</li>
+        <li>Bolo de cenoura com cobertura de chocolate</li>
+        <li>Melancia fresca</li>
+        <li>Banana</li>
+        <li>Café tradicional</li>
+        <li>Suco de abacaxi com hortelã</li>
+      </ul>
+      <p class="menu-note">Água saborizada disponível desde o início das atividades.</p>
+    </details>
+  </section>
+
+  <section class="rsvp" id="rsvp">
+    <h2>Confirme sua presença</h2>
+    <p class="sub">Preencha abaixo e envie a confirmação direto para a Pat pelo WhatsApp.</p>
+
+    <form id="rsvp-form" novalidate autocomplete="off">
+      <div class="step">
+        <label for="f-name" class="step-label"><span class="num">1</span>Seu nome</label>
+        <input type="text" id="f-name" name="name" placeholder="Nome e sobrenome" autocomplete="name">
+      </div>
+
+      <div class="step">
+        <fieldset id="f-status">
+          <legend class="step-label"><span class="num">2</span>Você vai?</legend>
+          <div class="pills">
+            <label class="pill"><input type="radio" name="status" value="vou"> Vou, sim!</label>
+            <label class="pill"><input type="radio" name="status" value="nao"> Não vou conseguir</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="step" id="f-people-step" hidden>
+        <p class="step-label" id="f-people-label"><span class="num">3</span>Quantas pessoas, contando você?</p>
+        <div class="stepper" role="group" aria-labelledby="f-people-label">
+          <button type="button" id="f-minus" aria-label="Diminuir">&minus;</button>
+          <output id="f-people" aria-live="polite">1</output>
+          <button type="button" id="f-plus" aria-label="Aumentar">+</button>
+          <span class="unit" id="f-unit">pessoa</span>
+        </div>
+        <p class="total">Valor do Pix: <b id="f-total">R$ 34,90</b></p>
+      </div>
+
+      <a class="send" id="f-send" href="#rsvp" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.1c-.24.68-1.42 1.3-1.95 1.34-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.92-4.66-4.1-.13-.18-1.1-1.47-1.1-2.8 0-1.33.7-1.99.95-2.26.24-.27.53-.34.71-.34l.51.01c.16 0 .38-.06.6.46.23.54.77 1.87.84 2 .07.14.11.3.02.48-.09.18-.14.3-.27.46l-.41.48c-.14.13-.28.28-.12.55.16.27.7 1.16 1.51 1.88 1.04.93 1.91 1.21 2.18 1.35.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.6-.14.25.09 1.57.74 1.84.88.27.14.45.2.52.32.07.11.07.66-.17 1.33Z"/></svg>
+        <span>Confirmar pelo WhatsApp</span>
+      </a>
+      <p class="form-msg" id="f-msg" role="status" aria-live="polite"></p>
+    </form>
+
+    <p class="fallback">Se o WhatsApp não abrir, mande sua resposta para a Pat no número <strong id="f-phone-text"></strong>.</p>
+  </section>
+
+  <footer class="footer">
+    <p class="script">Te espero lá!</p>
+    <p class="fine">57 anos da Pat · Café Colonial · 28 de novembro, 9h · Café na Orla</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  // Número da Pat no formato internacional, só dígitos (55 + DDD + número)
+  var PAT_PHONE = "5531987198996";
+  var PAT_PHONE_LABEL = "(31) 98719-8996";
+  var PRICE_CENTS = 3490;
+  var MIN = 1, MAX = 10;
+
+  function brl(cents){
+    var s = (cents / 100).toFixed(2).split(".");
+    return "R$ " + s[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "," + s[1];
+  }
+
+  var pixBtn = document.getElementById("pix-copy");
+  var pixMsg = document.getElementById("pix-msg");
+  pixBtn.addEventListener("click", function(){
+    var key = document.getElementById("pix-key").textContent.trim();
+    function fail(){ pixMsg.textContent = "Não deu para copiar. Toque e segure na chave para copiar."; }
+    try {
+      navigator.clipboard.writeText(key).then(function(){
+        pixMsg.textContent = "Chave Pix copiada!";
+      }, fail);
+    } catch(e){ fail(); }
+  });
+
+  var form = document.getElementById("rsvp-form");
+  var nameInput = document.getElementById("f-name");
+  var peopleStep = document.getElementById("f-people-step");
+  var out = document.getElementById("f-people");
+  var unit = document.getElementById("f-unit");
+  var minus = document.getElementById("f-minus");
+  var plus = document.getElementById("f-plus");
+  var send = document.getElementById("f-send");
+  var msg = document.getElementById("f-msg");
+  var people = 1;
+
+  document.getElementById("f-phone-text").textContent = PAT_PHONE_LABEL;
+
+  function status(){
+    var el = form.querySelector('input[name="status"]:checked');
+    return el ? el.value : "";
+  }
+
+  function setMsg(text, kind){
+    msg.textContent = text || "";
+    if (kind) msg.setAttribute("data-kind", kind); else msg.removeAttribute("data-kind");
+  }
+
+  function buildText(){
+    var name = nameInput.value.trim().replace(/\s+/g, " ");
+    if (status() === "vou"){
+      return "Oi, Pat! Confirmo presença no Café Colonial dos seus 57 anos, dia 28/11 às 9h no Café na Orla.\n"
+        + "Nome: " + name + "\n"
+        + "Pessoas: " + people + (people === 1 ? " (só eu)" : " (contando comigo)") + "\n"
+        + "Valor: " + brl(PRICE_CENTS * people) + (people === 1 ? "" : " (" + people + " x " + brl(PRICE_CENTS) + ")") + ". Vou fazer o Pix até 20/11.";
+    }
+    return "Oi, Pat! Infelizmente não vou conseguir ir ao Café Colonial do dia 28/11. Parabéns pelos 57 anos!\n"
+      + "Nome: " + name;
+  }
+
+  function refresh(){
+    out.textContent = people;
+    unit.textContent = people === 1 ? "pessoa" : "pessoas";
+    document.getElementById("f-total").textContent = brl(PRICE_CENTS * people);
+    minus.disabled = people <= MIN;
+    plus.disabled = people >= MAX;
+    peopleStep.hidden = status() !== "vou";
+    send.href = "https://wa.me/" + PAT_PHONE + "?text=" + encodeURIComponent(buildText());
+  }
+
+  minus.addEventListener("click", function(){ if (people > MIN){ people--; refresh(); } });
+  plus.addEventListener("click", function(){ if (people < MAX){ people++; refresh(); } });
+  nameInput.addEventListener("input", function(){ setMsg(""); refresh(); });
+  form.addEventListener("change", function(){ setMsg(""); refresh(); });
+  form.addEventListener("submit", function(ev){ ev.preventDefault(); });
+
+  send.addEventListener("click", function(ev){
+    if (!nameInput.value.trim()){
+      ev.preventDefault();
+      setMsg("Escreva seu nome antes de confirmar.", "err");
+      nameInput.focus();
+      return;
+    }
+    if (!status()){
+      ev.preventDefault();
+      setMsg("Escolha se você vai ou não.", "err");
+      return;
+    }
+    refresh();
+    setMsg(status() === "vou"
+      ? "Abrindo o WhatsApp. É só tocar em enviar na conversa com a Pat e fazer o Pix até 20/11."
+      : "Abrindo o WhatsApp. É só tocar em enviar na conversa com a Pat.", "ok");
+  });
+
+  refresh();
+})();
+</script>
+</body>
+</html>
